@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.py[cod]
+.env
+.streamlit/secrets.toml
+
+# Match archives and source snapshots are generated/downloaded locally.
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/wpl_source_manifest.json
+data/raw/wpl/*
+!data/raw/wpl/.gitkeep
+
+# Derived tables/reports are reproducible and are not committed.
+data/processed/*
+!data/processed/.gitkeep
+data/processed/wpl/*
+!data/processed/wpl/.gitkeep
+
+
+.DS_Store

@@ -1,0 +1,9 @@
+{
+  "dataset": "wpl",
+  "dataset_label": "Cricsheet Women's Premier League JSON archive",
+  "source_url": "https://cricsheet.org/downloads/wpl_json.zip",
+  "downloaded_at_utc": "2026-10-18T10:04:34.312610+00:00",
+  "archive_sha256": "533e7937056b47f169418b06d995ca85b193415390e750964e0a22982a07e6cc",
+  "json_files_extracted": 88,
+  "license_reference": "https://cricsheet.org/licensing/"
+}

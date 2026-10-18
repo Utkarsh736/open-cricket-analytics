@@ -1,0 +1,32 @@
+name: Tests and lint
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          enable-cache: true
+
+      - name: Install Python
+        run: uv python install 3.12
+
+      - name: Sync locked development dependencies
+        run: uv sync --locked --extra dev
+
+      - name: Run tests
+        run: uv run --locked pytest
+
+      - name: Check style
+        run: uv run --locked ruff check .
