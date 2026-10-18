@@ -96,7 +96,7 @@ def main() -> int:
                 content = archive.read(member)
                 parsed = json.loads(content.decode("utf-8"))
                 if not isinstance(parsed, dict) or not isinstance(parsed.get("info"), dict):
-                    raise ValueError(f"JSON file does not look like a Cricsheet match: {filename}")
+                    raise TypeError(f"JSON file does not look like a Cricsheet match: {filename}")
                 (extract_dir / filename).write_bytes(content)
                 match_files.append(filename)
 
@@ -135,7 +135,7 @@ def main() -> int:
         print(f"Archive SHA-256: {archive_sha256}")
         print("Review Cricsheet's current license and attribution terms before redistributing data.")
         return 0
-    except Exception as exc:  # network/archive failures vary by platform
+    except Exception as exc: # noqa: BLE001 # network/archive failures vary by platform
         print(f"Download/extraction failed: {type(exc).__name__}: {exc}", file=sys.stderr)
         print("Existing extracted data was left untouched unless the final swap had already begun.", file=sys.stderr)
         return 1

@@ -110,7 +110,7 @@ def parse_match(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]], list[
         "win_method": outcome.get("method"),
         "data_version": (match.get("meta") or {}).get("data_version"),
         "source_file": path.name,
-        "player_registry_entries": len((registry.get("people") or {})),
+        "player_registry_entries": len(registry.get("people") or {}),
     }
 
     innings_rows: list[dict[str, Any]] = []
@@ -477,9 +477,9 @@ def quality_report(tables: dict[str, pd.DataFrame], raw_dir: Path) -> dict[str, 
         "archive_sha256": manifest.get("archive_sha256"),
         "raw_directory": str(raw_dir),
         "json_files_found": len(list(raw_dir.glob("*.json"))),
-        "matches_parsed": int(len(matches)),
-        "innings_parsed": int(len(innings)),
-        "delivery_events_parsed": int(len(deliveries)),
+        "matches_parsed": len(matches),
+        "innings_parsed": len(innings),
+        "delivery_events_parsed": len(deliveries),
         "gender_values": gender_values,
         "match_type_values": type_values,
         "matches_by_season": {str(key): int(value) for key, value in season_counts.items()},
